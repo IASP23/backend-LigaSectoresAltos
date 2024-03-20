@@ -4,6 +4,6 @@ import { createRefeer } from "../controller/refeerController.js";
 const router = Router();
 
 // Ruta para crear un nuevo jugador
-router.post("/arbitro", createRefeer);
+router.post("/refeer", createRefeer);
 
 export default router;

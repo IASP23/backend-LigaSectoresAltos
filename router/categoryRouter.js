@@ -4,6 +4,6 @@ import { crearCategoria } from "../controller/categoryController.js";
 const router = Router();
 
 // Ruta para crear un nuevo jugador
-router.post("/categoria", crearCategoria);
+router.post("/category", crearCategoria);
 
 export default router;

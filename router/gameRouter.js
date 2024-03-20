@@ -1,9 +1,9 @@
 import Router from "express";
-import { crearJugador } from "../controller/playerController.js";
+import { crearJuego } from "../controller/gameController.js";
 
 const router = Router();
 
 // Ruta para crear un nuevo jugador
-router.post("/juego", crearJugador);
+router.post("/game", crearJuego);
 
 export default router;

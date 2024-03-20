@@ -9,3 +9,23 @@ export const crateTeam = async (req, res) => {
     res.status(400).json({ mensaje: error.message });
   }
 };
+
+export const getTeam = async (req, res) => {
+  try {
+    const setTeam = await team.findById(req.params.id);
+    res.status(200).json(setTeam);
+  } catch (error) {
+    res.status(400).json({ mensaje: error.message });
+  }
+};
+
+export const updateTeam = async (req, res) => {
+  try {
+    const updatedTeam = await team.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.status(200).json(updatedTeam);
+  } catch (error) {
+    res.status(400).json({ mensaje: error.message });
+  }
+};

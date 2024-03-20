@@ -1,0 +1,22 @@
+import express from "express";
+import connectDB from "./config/mongodb.js";
+import { config } from "dotenv";
+import playerRouter from "./router/playerRouter.js";
+import teamRouter from "./router/teamRouter.js";
+import bodyParser from "body-parser";
+connectDB();
+config();
+
+const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(3000, () => {
+  console.log(`Servidor esta en el puerto http://localhost:${PORT}`);
+});
+
+app.use(playerRouter);
+app.use(teamRouter);

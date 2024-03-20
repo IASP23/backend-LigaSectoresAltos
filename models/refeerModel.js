@@ -11,7 +11,7 @@ const arbitroSchema = new Schema({
     type: String,
   },
   fechaNacimiento: {
-    type: Date,
+    type: String,
     required: true,
   },
   juegos: [

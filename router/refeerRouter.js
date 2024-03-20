@@ -1,9 +1,9 @@
 import Router from "express";
-import { crateTeam } from "../controller/teamController.js";
+import { createRefeer } from "../controller/refeerController.js";
 
 const router = Router();
 
 // Ruta para crear un nuevo jugador
-router.post("/equipo", crateTeam);
+router.post("/arbitro", createRefeer);
 
 export default router;

@@ -7,8 +7,7 @@ const equipoSchema = new Schema({
     type: String,
   },
   fechaCreacion: {
-    type: Date,
-    default: Date.now,
+    type: String,
   },
   descripcion: String,
   jugadores: [

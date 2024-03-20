@@ -1,6 +1,6 @@
 import player from "../models/playerModel.js";
 
-export const crearJuego = async (req, res) => {
+export const crearJugador = async (req, res) => {
   try {
     const nuevoPlayer = new player(req.body);
     await nuevoPlayer.save();

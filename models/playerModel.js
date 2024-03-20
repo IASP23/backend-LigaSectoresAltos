@@ -11,7 +11,7 @@ const jugadorSchema = new Schema({
     type: String,
   },
   fechaNacimiento: {
-    type: Date,
+    type: String,
     required: true,
   },
   tipo: {

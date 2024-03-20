@@ -8,11 +8,11 @@ const torneoSchema = new Schema({
     required: true,
   },
   fechaInicio: {
-    type: Date,
+    type: String,
     required: true,
   },
   fechaFin: {
-    type: Date,
+    type: String,
     required: true,
   },
   categorias: [

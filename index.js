@@ -1,8 +1,7 @@
 import express from "express";
 import connectDB from "./config/mongodb.js";
 import { config } from "dotenv";
-import playerRouter from "./router/playerRouter.js";
-import teamRouter from "./router/teamRouter.js";
+import tournamentRouter from "./router/tournamentRouter.js";
 import bodyParser from "body-parser";
 connectDB();
 config();
@@ -18,5 +17,4 @@ app.listen(3000, () => {
   console.log(`Servidor esta en el puerto http://localhost:${PORT}`);
 });
 
-app.use(playerRouter);
-app.use(teamRouter);
+app.use(tournamentRouter);

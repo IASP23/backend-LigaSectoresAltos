@@ -26,6 +26,10 @@ const jugadorSchema = new Schema({
     type: Number,
     default: 0,
   },
+  goles: {
+    type: Schema.Types.ObjectId,
+    ref: "Gol",
+  },
 });
 
 const Jugador = mongoose.model("player", jugadorSchema);

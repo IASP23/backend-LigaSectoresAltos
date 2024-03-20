@@ -7,10 +7,21 @@ const golSchema = new Schema({
     type: Number,
     required: true,
   },
-  jugador: {
-    type: Schema.Types.ObjectId,
-    ref: "Jugador",
-  },
+  equipos: [
+    {
+      equipo: {
+        type: Schema.Types.ObjectId,
+        ref: "Team",
+
+        jugadores: [
+          {
+            type: Schema.Types.ObjectId,
+            ref: "player",
+          },
+        ],
+      },
+    },
+  ],
   partido: {
     type: Schema.Types.ObjectId,
     ref: "Partido",

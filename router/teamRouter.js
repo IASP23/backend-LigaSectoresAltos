@@ -1,10 +1,5 @@
 import express from "express";
-import {
-  crearEquipo,
-  actualizarEquipo,
-  obtenerEquipo,
-  eliminarEquipo,
-} from "../controller/teamController.js";
+import { c } from "../controller/teamController.js";
 
 const router = express.Router();
 

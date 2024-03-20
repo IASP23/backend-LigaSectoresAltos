@@ -13,26 +13,8 @@ const equipoSchema = new Schema({
   descripcion: String,
   jugadores: [
     {
-      nombre: {
-        type: String,
-        required: true,
-      },
-      fechaNacimiento: {
-        type: Date,
-        required: true,
-      },
-      tipo: {
-        type: String,
-        required: true,
-      },
-      tarjetasRojas: {
-        type: Number,
-        default: 0,
-      },
-      tarjetasAmarillas: {
-        type: Number,
-        default: 0,
-      },
+      type: Schema.Types.ObjectId,
+      ref: "player",
     },
   ],
 });

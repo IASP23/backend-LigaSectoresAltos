@@ -11,17 +11,28 @@ const juegoSchema = new Schema({
     type: String,
     required: true,
   },
-  equipoA: {
-    type: Schema.Types.ObjectId,
-    ref: "Equipo",
-  },
-  equipoB: {
-    type: Schema.Types.ObjectId,
-    ref: "Equipo",
-  },
+  equipos: [
+    {
+      equipo: {
+        type: Schema.Types.ObjectId,
+        ref: "Team",
+
+        jugadores: [
+          {
+            type: Schema.Types.ObjectId,
+            ref: "player",
+          },
+        ],
+      },
+    },
+  ],
   resultado: {
     type: String,
     enum: ["equipoA", "equipoB", "empate"],
+  },
+  gol: {
+    type: Schema.Types.ObjectId,
+    ref: "Gol",
   },
 });
 

@@ -8,6 +8,12 @@ const categoriaSchema = new Schema({
     required: true,
   },
   descripcion: String,
+  equipos: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Team",
+    },
+  ],
 });
 
 const Categoria = mongoose.model("Categoria", categoriaSchema);

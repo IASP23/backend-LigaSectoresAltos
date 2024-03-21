@@ -27,8 +27,8 @@ const jugadorSchema = new Schema({
     default: 0,
   },
   goles: {
-    type: Schema.Types.ObjectId,
-    ref: "Gol",
+    type: Number,
+    default: 0,
   },
 });
 

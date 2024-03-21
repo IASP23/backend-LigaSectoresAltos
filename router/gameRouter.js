@@ -1,6 +1,6 @@
 import Router from "express";
 import {
-  crearJuego,
+  crearGame,
   getGame,
   getWin,
   updateGame,
@@ -9,7 +9,7 @@ import {
 const router = Router();
 
 // Ruta para crear un nuevo jugador
-router.post("/game", crearJuego);
+router.post("/game", crearGame);
 router.patch("/game/:id", updateGame);
 router.get("/game/:id", getGame);
 router.get("/ganador/:id", getWin);

@@ -1,10 +1,11 @@
-import Juego from "../models/gameModel.js";
+import Game from "../models/gameModel.js";
+import player from "../models/playerModel.js";
 
-export const crearJuego = async (req, res) => {
+export const crearGame = async (req, res) => {
   try {
-    const nuevoJuego = new Juego(req.body);
-    await nuevoJuego.save();
-    res.status(201).json(nuevoJuego);
+    const nuevoGame = new Game(req.body);
+    await nuevoGame.save();
+    res.status(201).json(nuevoGame);
   } catch (error) {
     res.status(400).json({ mensaje: error.message });
   }
@@ -12,7 +13,7 @@ export const crearJuego = async (req, res) => {
 
 export const getGame = async (req, res) => {
   try {
-    const setGame = await Juego.findById(req.params.id);
+    const setGame = await Game.findById(req.params.id);
     res.status(200).json(setGame);
   } catch (error) {
     res.status(400).json({ mensaje: error.message });
@@ -21,7 +22,7 @@ export const getGame = async (req, res) => {
 
 export const updateGame = async (req, res) => {
   try {
-    const updatedCategory = await Juego.findByIdAndUpdate(
+    const updatedCategory = await Game.findByIdAndUpdate(
       req.params.id,
       req.body,
       {
@@ -36,7 +37,7 @@ export const updateGame = async (req, res) => {
 
 export const getWin = async (req, res) => {
   try {
-    const setGame = await Juego.findById(req.params.id);
+    const setGame = await Game.findById(req.params.id);
 
     if (setGame.golesLocal == setGame.golesVisitante) {
       setGame.ganador = "Empate";

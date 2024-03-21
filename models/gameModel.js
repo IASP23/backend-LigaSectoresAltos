@@ -43,6 +43,17 @@ const juegoSchema = new Schema({
     },
   ],
   ganador: { type: String },
+  goles: [
+    {
+      jugador: {
+        type: Schema.Types.ObjectId,
+        ref: "player",
+      },
+      cantidad: {
+        type: Number,
+      },
+    },
+  ],
 });
 
 const Juego = mongoose.model("Juego", juegoSchema);

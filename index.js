@@ -3,7 +3,6 @@ import connectDB from "./config/mongodb.js";
 import { config } from "dotenv";
 import categoryRouter from "./router/categoryRouter.js";
 import gameRouter from "./router/gameRouter.js";
-import golRouter from "./router/golRouter.js";
 import playerRouter from "./router/playerRouter.js";
 import refeerRouter from "./router/refeerRouter.js";
 import teamRouter from "./router/teamRouter.js";
@@ -25,7 +24,6 @@ app.listen(3000, () => {
 
 app.use(categoryRouter);
 app.use(gameRouter);
-app.use(golRouter);
 app.use(playerRouter);
 app.use(refeerRouter);
 app.use(teamRouter);

@@ -33,3 +33,23 @@ export const updateGame = async (req, res) => {
     res.status(400).json({ mensaje: error.message });
   }
 };
+
+export const getWin = async (req, res) => {
+  try {
+    const setGame = await Juego.findById(req.params.id);
+
+    if (setGame.golesLocal == setGame.golesVisitante) {
+      setGame.ganador = "Empate";
+    }
+
+    if (setGame.golesLocal > setGame.golesVisitante) {
+      setGame.ganador = setGame.equipoLocal;
+    } else {
+      setGame.ganador = setGame.equipoVisitante;
+    }
+    setGame.save();
+    res.status(200).json(setGame);
+  } catch (error) {
+    res.status(400).json({ mensaje: error.message });
+  }
+};

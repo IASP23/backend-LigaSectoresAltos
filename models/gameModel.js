@@ -11,29 +11,50 @@ const juegoSchema = new Schema({
     type: String,
     required: true,
   },
-  equipos: [
+  equipoLocal: {
+    type: Schema.Types.ObjectId,
+    ref: "Team",
+  },
+  equipoVisitante: {
+    type: Schema.Types.ObjectId,
+    ref: "Team",
+  },
+  golesLocal: {
+    type: Number,
+  },
+  golesVisitante: {
+    type: Number,
+  },
+  estado: {
+    type: String,
+    enum: ["pendiente", "jugando", "finalizado"],
+    default: "pendiente",
+  },
+  jugadoresLocal: [
     {
-      equipo: {
-        type: Schema.Types.ObjectId,
-        ref: "Team",
-
-        jugadores: [
-          {
-            type: Schema.Types.ObjectId,
-            ref: "player",
-          },
-        ],
-      },
+      type: Schema.Types.ObjectId,
+      ref: "player",
     },
   ],
-  resultado: {
-    type: String,
-    enum: ["equipoA", "equipoB", "empate"],
-  },
-  gol: {
-    type: Schema.Types.ObjectId,
-    ref: "Gol",
-  },
+  jugadoresVisitante: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "player",
+    },
+  ],
+  ganador: { type: String },
+  goleadorLocal: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "player",
+    },
+  ],
+  goleadorVisitante: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "player",
+    },
+  ],
 });
 
 const Juego = mongoose.model("Juego", juegoSchema);

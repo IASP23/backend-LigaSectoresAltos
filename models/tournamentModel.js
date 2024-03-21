@@ -17,16 +17,8 @@ const torneoSchema = new Schema({
   },
   categorias: [
     {
-      categoria: {
-        type: Schema.Types.ObjectId,
-        ref: "Categoria",
-        equipo: [
-          {
-            type: Schema.Types.ObjectId,
-            ref: "Team",
-          },
-        ],
-      },
+      type: Schema.Types.ObjectId,
+      ref: "Categoria",
     },
   ],
 });

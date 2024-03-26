@@ -26,6 +26,9 @@ const jugadorSchema = new Schema({
     type: Number,
     default: 0,
   },
+  numero: {
+    type: Number,
+  },
   goles: {
     type: Number,
     default: 0,

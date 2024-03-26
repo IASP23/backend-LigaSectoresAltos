@@ -1,8 +1,8 @@
 import Router from "express";
 import {
+  calcular,
   crearGame,
   getGame,
-  getWin,
   updateGame,
 } from "../controller/gameController.js";
 
@@ -12,6 +12,6 @@ const router = Router();
 router.post("/game", crearGame);
 router.patch("/game/:id", updateGame);
 router.get("/game/:id", getGame);
-router.get("/ganador/:id", getWin);
+router.get("/games", calcular);
 
 export default router;

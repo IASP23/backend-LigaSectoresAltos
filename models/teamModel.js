@@ -9,6 +9,10 @@ const equipoSchema = new Schema({
   fechaCreacion: {
     type: String,
   },
+  goles: {
+    type: Number,
+    default: 0,
+  },
   descripcion: String,
   jugadores: [
     {

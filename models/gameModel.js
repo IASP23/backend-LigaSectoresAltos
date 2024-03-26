@@ -21,9 +21,11 @@ const juegoSchema = new Schema({
   },
   golesLocal: {
     type: Number,
+    default: 0,
   },
   golesVisitante: {
     type: Number,
+    default: 0,
   },
   estado: {
     type: String,

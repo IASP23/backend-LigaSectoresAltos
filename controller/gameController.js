@@ -1,5 +1,7 @@
 import Game from "../models/gameModel.js";
 import team from "../models/teamModel.js";
+import player from "../models/playerModel.js";
+
 import { calcularGolesEquipo, getWin } from "../utils/gameLogic.js";
 
 export const crearGame = async (req, res) => {
@@ -28,9 +30,18 @@ export const updateGame = async (req, res) => {
       new: true,
     });
 
+    const teams = await team.find();
+
+    /* Modifica el Partido */
     const updatedGameWithGoles = await calculateGoles(updatedGame);
     await updatedGameWithGoles.save();
-    await calcular();
+
+    /* Modifica el equipo */
+
+    for (const equipo of teams) {
+      await calcularPorEquipo(equipo.id);
+    }
+
     res.status(200).json(updatedGameWithGoles);
   } catch (error) {
     res.status(400).json({ mensaje: error.message });
@@ -70,9 +81,8 @@ export const calculateGoles = async (updatedGame) => {
   }
 };
 
-export const calcular = async (id) => {
+export const calcularPorEquipo = async (idEquipo) => {
   try {
-    const idEquipo = "65fb1bd3b3501269f0d913cf";
     const partidos = await Game.find({
       $or: [{ equipoLocal: idEquipo }, { equipoVisitante: idEquipo }],
     });
@@ -90,5 +100,36 @@ export const calcular = async (id) => {
     return true;
   } catch (error) {
     throw new Error(error.message);
+  }
+};
+
+export const calcularPorJugadores = async (req, res) => {
+  try {
+    const partidos = await Game.find();
+
+    let jugadoresGoles = {};
+
+    partidos.forEach((partido) => {
+      partido.goles.forEach((gol) => {
+        if (jugadoresGoles[gol.jugador]) {
+          jugadoresGoles[gol.jugador] += gol.cantidad;
+        } else {
+          jugadoresGoles[gol.jugador] = gol.cantidad;
+        }
+      });
+    });
+
+    ///* EL VALOR DEL JUGADORES GOLES DEBO MODIFICAR DIRECTAMENTE A JUGADORES SIN SUMAR  */ */
+
+    Object.keys(jugadoresGoles).forEach(async (jugadorId) => {
+      const golesJugador = jugadoresGoles[jugadorId];
+      const jugador = await player.findById(jugadorId);
+      jugador.goles = golesJugador; // Suma inicial si "goles" es indefinido
+      await jugador.save();
+    });
+
+    res.status(200).json(jugadoresGoles);
+  } catch (error) {
+    res.status(400).json({ mensaje: error.message });
   }
 };

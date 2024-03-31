@@ -1,6 +1,6 @@
 import Router from "express";
 import {
-  calcular,
+  calcularPorJugadores,
   crearGame,
   getGame,
   updateGame,
@@ -12,6 +12,6 @@ const router = Router();
 router.post("/game", crearGame);
 router.patch("/game/:id", updateGame);
 router.get("/game/:id", getGame);
-router.get("/games", calcular);
+router.get("/games", calcularPorJugadores);
 
 export default router;

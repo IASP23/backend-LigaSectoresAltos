@@ -27,3 +27,7 @@ export const calcularGolesEquipo = (juego, idEquipo) => {
   }
   return golesEquipo;
 };
+
+export const calcularGolesJugador = (gol) => {
+  let golesJugador = 0;
+};

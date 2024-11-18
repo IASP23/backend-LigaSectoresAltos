@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
+/* Test */
 const categoriaSchema = new Schema({
   tipo: {
     type: String,
